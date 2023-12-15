@@ -1,12 +1,13 @@
-import React from "react";
 import "./App.css";
 import Button from "./Shared-Components/Button/Button";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./Styles/Theme";
 
 function App() {
   return (
-    <div className="App">
-      <Button label="Rite Sync" />
-    </div>
+    <ThemeProvider theme={theme}>
+      <Button variant="primary">Primary Button</Button>
+    </ThemeProvider>
   );
 }
 
