@@ -5,7 +5,9 @@ import Button from "./Shared-Components/Button/Button";
 function App() {
   return (
     <div className="App">
-      <Button label="Rite Sync" />
+      <Button $primary onClick={() => console.log("something")}>
+        Styled-Component Button
+      </Button>
     </div>
   );
 }
