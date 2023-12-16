@@ -101,6 +101,7 @@ const SignIn = () => {
                   color="primary"
                   type="submit"
                   fullWidth
+                  size="large"
                   disabled={!termsChecked && !username && !password}
                 >
                   Sign In

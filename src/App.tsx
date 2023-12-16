@@ -8,6 +8,8 @@ import {
 } from "react-router-dom";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import Root from "./pages/Root";
+import Dashboard from "./pages/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +19,11 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <SignUp />,
+  },
+  {
+    path: "/",
+    element: <Root />,
+    children: [{path: 'dashboard', element: <Dashboard />}]
   },
 ]);
 
