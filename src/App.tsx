@@ -6,6 +6,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Root from "./pages/Root";
 import Dashboard from "./pages/Dashboard";
+import Connections from "./pages/Connections";
 import Statistics from "./pages/Statistics";
 
 const router = createBrowserRouter([
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       { path: "dashboard", element: <Dashboard /> },
+      { path: "connections", element: <Connections /> },
       {
         path: "statistics",
         element: <Statistics />,
