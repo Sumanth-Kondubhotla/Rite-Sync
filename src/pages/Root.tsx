@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
+import { styled, Theme, CSSObject } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
@@ -11,7 +11,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import SideNavigation from "./SideNavigation";
-import { Outlet } from 'react-router-dom'
+import { Outlet } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -51,7 +51,7 @@ interface AppBarProps extends MuiAppBarProps {
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
 })<AppBarProps>(({ theme, open }) => ({
-  background: 'white',
+  background: "white",
   zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(["width", "margin"], {
     easing: theme.transitions.easing.sharp,
@@ -84,13 +84,16 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-
 const RiteLogo = () => {
-  return <span><img src="images/rite-icon.png" alt="Rite Logo"/><img src="images/rite.png" alt="Rite"/></span>
-}
+  return (
+    <span>
+      <img src="images/rite-icon.png" alt="Rite Logo" />
+      <img src="images/rite.png" alt="Rite" />
+    </span>
+  );
+};
 
 export default function MiniDrawer() {
-  const theme = useTheme();
   const [open, setOpen] = useState(true);
 
   const handleDrawerOpen = () => {
@@ -106,7 +109,6 @@ export default function MiniDrawer() {
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
-         
           <IconButton
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -118,18 +120,20 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Box sx={{
+          <Box
+            sx={{
               ...(open && { display: "none" }),
-            }}>
+            }}
+          >
             <RiteLogo />
           </Box>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          </Typography>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1 }}
+          ></Typography>
           <div>
-            <IconButton
-              aria-label="account of current user"
-              size="large"
-            >
+            <IconButton aria-label="account of current user" size="large">
               <AccountCircle />
             </IconButton>
           </div>
@@ -139,17 +143,16 @@ export default function MiniDrawer() {
         <DrawerHeader>
           <RiteLogo />
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <MenuIcon />
-            ) : (
-              <MenuIcon />
-            )}
+            <MenuIcon />
           </IconButton>
         </DrawerHeader>
         <Divider />
-       <SideNavigation open={open}/>
+        <SideNavigation open={open} />
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3, background: '#F7FCFF', height: '100vh' }}>
+      <Box
+        component="main"
+        sx={{ flexGrow: 1, p: 3, background: "#F7FCFF", height: "100vh" }}
+      >
         <DrawerHeader />
         <Outlet />
       </Box>
