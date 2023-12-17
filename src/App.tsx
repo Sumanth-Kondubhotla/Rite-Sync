@@ -1,15 +1,12 @@
 import { ThemeProvider } from "@mui/system";
 import "./App.css";
 import customTheme from "./theme/custom-theme";
-
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Root from "./pages/Root";
 import Dashboard from "./pages/Dashboard";
+import Statistics from "./pages/Statistics";
 
 const router = createBrowserRouter([
   {
@@ -23,14 +20,20 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    children: [{path: 'dashboard', element: <Dashboard />}]
+    children: [
+      { path: "dashboard", element: <Dashboard /> },
+      {
+        path: "statistics",
+        element: <Statistics />,
+      },
+    ],
   },
 ]);
 
 const App = () => {
   return (
     <ThemeProvider theme={customTheme}>
-       <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </ThemeProvider>
   );
 };
