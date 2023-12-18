@@ -1,6 +1,6 @@
 import { FC } from "react";
 import CircularStatus from "../shared/components/CircularStatus/CircularStatus";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Typography, useTheme } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import { BarChart } from "@mui/x-charts/BarChart";
@@ -26,9 +26,19 @@ const data1 = [{ label: "Job Scheduler", value: 100 }];
 const data2 = [{ label: "Application", value: 100 }];
 
 const Statistics: FC = () => {
+  const theme = useTheme();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2} rowSpacing={2}>
+        <Grid item xs={12}>
+          <Typography
+            variant="body2"
+            color={theme.palette.primary.main}
+            sx={{ fontSize: "18px", fontWeight: 700 }}
+          >
+            Dashboard
+          </Typography>
+        </Grid>
         <Grid item xs={4}>
           <Item>
             <PieChart
@@ -97,9 +107,6 @@ const Statistics: FC = () => {
             </StyledDiv>
           </Item>
         </Grid>
-        {/* <Grid item xs={8}>
-          
-        </Grid> */}
       </Grid>
     </Box>
   );

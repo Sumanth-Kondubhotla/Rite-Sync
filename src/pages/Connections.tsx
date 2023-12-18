@@ -3,7 +3,6 @@ import {
   Button,
   Card,
   CardContent,
-  Checkbox,
   FormControl,
   FormHelperText,
   Grid,
@@ -155,14 +154,7 @@ function stableSort<T>(
 }
 
 function EnhancedTableHead(props: EnhancedTableProps) {
-  const {
-    onSelectAllClick,
-    order,
-    orderBy,
-    numSelected,
-    rowCount,
-    onRequestSort,
-  } = props;
+  const { order, orderBy, onRequestSort } = props;
   const createSortHandler =
     (property: any) => (event: React.MouseEvent<unknown>) => {
       onRequestSort(event, property);
@@ -175,7 +167,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
       }}
     >
       <TableRow>
-        <TableCell padding="checkbox">
+        {/* <TableCell padding="checkbox">
           <Checkbox
             color="primary"
             indeterminate={numSelected > 0 && numSelected < rowCount}
@@ -185,7 +177,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
               "aria-label": "select all connections",
             }}
           />
-        </TableCell>
+        </TableCell> */}
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
@@ -289,24 +281,24 @@ const Connections = () => {
     setSelected([]);
   };
 
-  const handleClick = (event: React.MouseEvent<unknown>, id: number) => {
-    const selectedIndex = selected.indexOf(id);
-    let newSelected: readonly number[] = [];
+  // const handleClick = (event: React.MouseEvent<unknown>, id: number) => {
+  //   const selectedIndex = selected.indexOf(id);
+  //   let newSelected: readonly number[] = [];
 
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, id);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      );
-    }
-    setSelected(newSelected);
-  };
+  //   if (selectedIndex === -1) {
+  //     newSelected = newSelected.concat(selected, id);
+  //   } else if (selectedIndex === 0) {
+  //     newSelected = newSelected.concat(selected.slice(1));
+  //   } else if (selectedIndex === selected.length - 1) {
+  //     newSelected = newSelected.concat(selected.slice(0, -1));
+  //   } else if (selectedIndex > 0) {
+  //     newSelected = newSelected.concat(
+  //       selected.slice(0, selectedIndex),
+  //       selected.slice(selectedIndex + 1)
+  //     );
+  //   }
+  //   setSelected(newSelected);
+  // };
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -319,7 +311,7 @@ const Connections = () => {
     setPage(0);
   };
 
-  const isSelected = (id: number) => selected.indexOf(id) !== -1;
+  // const isSelected = (id: number) => selected.indexOf(id) !== -1;
 
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
@@ -448,23 +440,23 @@ const Connections = () => {
                             <TableBody>
                               {visibleRows.length > 0 &&
                                 visibleRows.map((row, index) => {
-                                  const isItemSelected = isSelected(row.id);
+                                  // const isItemSelected = isSelected(row.id);
                                   const labelId = `enhanced-table-checkbox-${index}`;
 
                                   return (
                                     <TableRow
                                       hover
-                                      onClick={(event) =>
-                                        handleClick(event, row.id)
-                                      }
-                                      role="checkbox"
-                                      aria-checked={isItemSelected}
+                                      // onClick={(event) =>
+                                      //   handleClick(event, row.id)
+                                      // }
+                                      // role="checkbox"
+                                      // aria-checked={isItemSelected}
                                       tabIndex={-1}
                                       key={row.id}
-                                      selected={isItemSelected}
+                                      // selected={isItemSelected}
                                       sx={{ cursor: "pointer" }}
                                     >
-                                      <TableCell padding="checkbox">
+                                      {/* <TableCell padding="checkbox">
                                         <Checkbox
                                           color="primary"
                                           checked={isItemSelected}
@@ -472,7 +464,7 @@ const Connections = () => {
                                             "aria-labelledby": labelId,
                                           }}
                                         />
-                                      </TableCell>
+                                      </TableCell> */}
                                       <TableCell
                                         component="th"
                                         id={labelId}

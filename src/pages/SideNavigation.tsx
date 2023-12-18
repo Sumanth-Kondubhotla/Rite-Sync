@@ -6,10 +6,13 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { List } from "@mui/material";
-import ExpandLess from "@mui/icons-material/ExpandLess";
-import ExpandMore from "@mui/icons-material/ExpandMore";
+// import ExpandLess from "@mui/icons-material/ExpandLess";
+// import ExpandMore from "@mui/icons-material/ExpandMore";
 import { useLocation, useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
+import DashboardIcon from "../Icons/DashboardIcon";
+import ConnectionsIcon from "../Icons/ConnectionsIcon";
+import InstancesIcon from "../Icons/InstancesIcon";
 
 const StyledListItem = styled(ListItemButton)(({ theme, selected }) => ({
   borderLeft: selected ? `4px solid ${theme.palette.primary.main}` : "none",
@@ -19,15 +22,15 @@ const StyledListItem = styled(ListItemButton)(({ theme, selected }) => ({
 const NAVIGATION_LIST = [
   {
     label: "Dashboard",
-    icon: <InboxIcon />,
+    icon: <DashboardIcon />,
   },
   {
     label: "Connections",
-    icon: <MailIcon />,
+    icon: <ConnectionsIcon />,
   },
   {
     label: "Instances",
-    icon: <InboxIcon />,
+    icon: <InstancesIcon />,
   },
   {
     label: "Module Selector",
@@ -81,13 +84,13 @@ const SideNavigation = ({ open }: { open: boolean }) => {
               {icon}
             </ListItemIcon>
             <ListItemText primary={label} sx={{ opacity: open ? 1 : 0 }} />
-            {!!selectedItem
+            {/* {!!selectedItem
               .toLocaleLowerCase()
               .includes(label.toLocaleLowerCase()) ? (
               <ExpandLess />
             ) : (
               <ExpandMore />
-            )}
+            )} */}
           </StyledListItem>
         </ListItem>
       ))}

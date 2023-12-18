@@ -8,6 +8,7 @@ import Root from "./pages/Root";
 import Dashboard from "./pages/Dashboard";
 import Connections from "./pages/Connections";
 import Statistics from "./pages/Statistics";
+import Instances from "./pages/Instances";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "statistics",
         element: <Statistics />,
+      },
+      {
+        path: "instances",
+        element: <Instances />,
       },
     ],
   },
