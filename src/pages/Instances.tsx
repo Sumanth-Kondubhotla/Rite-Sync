@@ -12,18 +12,19 @@ import {
   styled,
   useTheme,
 } from "@mui/material";
-import { ChangeEvent, FC, useState } from "react";
+import axios from "axios";
+import { FC, useEffect, useState } from "react";
 
 interface InstancesState {
   sourceInstance: string;
   targetInstance: string;
 }
 
-const choices = [
-  { label: "Option-1", value: "1" },
-  { label: "Option-2", value: "2" },
-  { label: "Option-3", value: "3" },
-];
+// const choices = [
+//   { label: "Option-1", value: "1" },
+//   { label: "Option-2", value: "2" },
+//   { label: "Option-3", value: "3" },
+// ];
 
 const StyledHeader = styled("h2")(() => ({
   color: "#272727",
@@ -45,6 +46,7 @@ const Instances: FC = () => {
     sourceInstance: "",
     targetInstance: "",
   });
+  const [choices, setChoices] = useState<any[]>([]);
 
   const onFormControlChange = (event: SelectChangeEvent) => {
     const { name } = event.target;
@@ -57,6 +59,19 @@ const Instances: FC = () => {
 
   const handleSubmit = () => {
     console.log(instances);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    try {
+      const response = await axios.get("https://dummyjson.com/products");
+      setChoices(response.data.products);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -88,7 +103,9 @@ const Instances: FC = () => {
                   onChange={onFormControlChange}
                 >
                   {choices?.map((choice) => (
-                    <MenuItem value={choice.value}>{choice?.label}</MenuItem>
+                    <MenuItem key={choice?.id} value={choice?.title}>
+                      {choice?.title}
+                    </MenuItem>
                   ))}
                 </Select>
               </StyledFormControl>
@@ -107,7 +124,9 @@ const Instances: FC = () => {
                   onChange={onFormControlChange}
                 >
                   {choices?.map((choice) => (
-                    <MenuItem value={choice.value}>{choice?.label}</MenuItem>
+                    <MenuItem key={choice?.id} value={choice?.title}>
+                      {choice?.title}
+                    </MenuItem>
                   ))}
                 </Select>
               </StyledFormControl>
